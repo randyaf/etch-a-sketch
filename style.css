@@ -1,0 +1,35 @@
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+body > .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1080px;
+    height: 1080px;
+    border: 1px solid grey;
+}
+
+.container > .grid-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: start;
+    width: 1000px;
+    height: 1000px;
+    /* border: 1px solid grey; */
+}
+
+.grid-container .tile {
+    border: 1px solid grey;
+}
