@@ -9,6 +9,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 20px;
     height: 100vh;
 }
 
@@ -32,4 +33,23 @@ body > .container {
 
 .grid-container .tile {
     border: 1px solid grey;
+}
+
+body > .right-side-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    width: 200px;
+    height: 1080px;
+    border: 1px solid grey;
+}
+
+.right-side-panel > .grid-button {
+    width: 100px;
+    height: 40px;
+    border: 1px solid grey;
+    border-radius: 5px;
 }
