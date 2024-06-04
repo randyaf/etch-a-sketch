@@ -47,9 +47,48 @@ body > .right-side-panel {
     border: 1px solid grey;
 }
 
-.right-side-panel > .grid-button {
+.right-side-panel .grid-button {
     width: 100px;
     height: 40px;
     border: 1px solid grey;
     border-radius: 5px;
+}
+
+.right-side-panel .grid-button.disable {
+    width: 0;
+    visibility: hidden;
+    overflow: hidden;
+}
+
+.right-side-panel > .custom-grid-button-container {
+    display: flex;
+    justify-content: center;
+    max-width: 200px;
+    height: 40px;
+}
+
+.custom-grid-button-container > * {
+    transition: all 0.2s ease-in-out;
+}
+
+.custom-grid-button-container > .custom-grid-input {
+    height: 100%;
+    width: 100px;
+    margin-right: 10px;
+}
+
+.custom-grid-button-container > .custom-grid-input.disable {
+    width: 0;
+    visibility: hidden;
+    overflow: hidden;
+    margin-right: 0;
+}
+
+.custom-grid-button-container > .custom-grid-submit {
+    height: 100%;
+    width: 80px;
+}
+
+.custom-grid-button-container > .custom-grid-submit.disable {
+    display: none;
 }

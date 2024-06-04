@@ -1,5 +1,6 @@
 let isMouseDown = false;
 const gridContainer = document.querySelector(".grid-container");
+const rightSidePanel = document.querySelector(".right-side-panel");
 
 document.addEventListener("DOMContentLoaded", event => {
     resetAndCreateGrid(16);
@@ -14,12 +15,13 @@ document.addEventListener("mouseup", (event) => {
     isMouseDown = false
 });
 
+rightSidePanel.addEventListener("click", changeGrid);
+
+
 function paintTheTile(event) {
     if (event.target.matches(".tile") && isMouseDown) {
         event.preventDefault();
         event.target.style.backgroundColor = "red";
-        console.log("shift is: " + event.shiftKey)
-        console.log("shift is--: " + event.button)
     }
 }
 
@@ -42,3 +44,60 @@ function resetAndCreateGrid(tileNumber) {
     }
 }
 
+function changeGrid(event) {
+    if (event.target.matches(".custom-grid-button")) {
+        askGridNumber(event);
+    } else if (event.target.matches(".custom-grid-submit")) {
+        if (
+            typeof getInputValue() === "number" &&
+            getInputValue() >= 4 && getInputValue() <= 100
+            ) {
+                resetAndCreateGrid(getInputValue());
+                toggleCustomGridButton(true);
+                toggleInputGrid(false);
+            } else {
+                alert("please set the number between 4 and 100");
+                console.log(getInputValue());
+            }
+    } else if (event.target.matches(".grid-16-button")) {
+        resetAndCreateGrid(16);
+    } else if (event.target.matches(".grid-32-button")) {
+        resetAndCreateGrid(32);
+    } else if (event.target.matches(".grid-64-button")) {
+        resetAndCreateGrid(64);
+    } else if (event.target.matches(".grid-100-button")) {
+        resetAndCreateGrid(100);
+    } else if (event.target.matches(".grid-200-button")) {
+        resetAndCreateGrid(200);
+    }
+}
+
+function askGridNumber(event) {
+    if (event.target.matches(".custom-grid-button")) {
+        toggleInputGrid(true);
+        toggleCustomGridButton(false);
+    }
+}
+
+function toggleInputGrid(bol) {
+    const inputField = document.querySelector(".custom-grid-input");
+    const submitButton = document.querySelector(".custom-grid-submit");
+    if (bol) {
+        inputField.classList.remove("disable");
+        submitButton.classList.remove("disable");
+    } else {
+        inputField.classList.add("disable");
+        submitButton.classList.add("disable");
+    }
+}
+
+function toggleCustomGridButton(bol) {
+    const customGridButton = document.querySelector(".custom-grid-button");
+    if (bol) customGridButton.classList.remove("disable");
+    else customGridButton.classList.add("disable")
+}
+
+function getInputValue() {
+    const inputField = document.querySelector(".custom-grid-input");
+    return parseInt(inputField.value);
+}
